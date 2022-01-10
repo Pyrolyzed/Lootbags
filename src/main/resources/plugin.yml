@@ -1,0 +1,8 @@
+name: Lootbags
+version: '${project.version}'
+main: me.pyrolyzed.lootbags.Lootbags
+api-version: 1.18
+prefix: Lootbags
+softdepend: [ Vault ]
+authors: [ Pyrolyzed ]
+description: A plugin that provides the player with RNG-based lootbags.

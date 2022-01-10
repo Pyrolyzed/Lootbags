@@ -1,0 +1,19 @@
+lootbags:
+  common:
+    name: '&bCommon Lootbag'
+    max-rewards: 3
+    display-material: CHEST
+
+    rewards:
+      '1':
+        type: DIAMOND
+        chance: 25
+        amount: 1
+        name: '&aA very special &bdiamond'
+        glowing: true
+        enchantments:
+          '1':
+            type: SHARPNESS
+            level: 1
+        hide-enchantments: false
+
