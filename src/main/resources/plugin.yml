@@ -4,5 +4,11 @@ main: me.pyrolyzed.lootbags.Lootbags
 api-version: 1.18
 prefix: Lootbags
 softdepend: [ Vault ]
+depend: [ NBTAPI ]
 authors: [ Pyrolyzed ]
 description: A plugin that provides the player with RNG-based lootbags.
+
+commands:
+  lootbags:
+    aliases: [lb, lootbag, lootb, lbag, lbags]
+    description: "The main lootbags command."

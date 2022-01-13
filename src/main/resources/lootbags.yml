@@ -3,6 +3,9 @@ lootbags:
     name: '&bCommon Lootbag'
     max-rewards: 3
     display-material: CHEST
+    description:
+      - '&dCommon lootbag'
+      - 'very cool'
 
     rewards:
       '1':
@@ -12,8 +15,7 @@ lootbags:
         name: '&aA very special &bdiamond'
         glowing: true
         enchantments:
-          '1':
-            type: SHARPNESS
-            level: 1
-        hide-enchantments: false
-
+          SHARPNESS: 1
+        lore:
+          - 'Woah Cool'
+          - '&cDIAMOND!'

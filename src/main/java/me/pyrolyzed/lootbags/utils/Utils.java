@@ -27,7 +27,7 @@ public class Utils {
      * @return The translated list
      */
     public static List<String> color(List<String> col) {
-        return col.stream().map(Utils::color).collect(Collectors.toList());
+        return col.stream().map(s -> ChatColor.translateAlternateColorCodes('&', s)).collect(Collectors.toList());
     }
 
 

@@ -1,6 +1,7 @@
 package me.pyrolyzed.lootbags.objects;
 
 import me.pyrolyzed.lootbags.interfaces.IOpenable;
+import me.pyrolyzed.lootbags.utils.ItemBuilder;
 import me.pyrolyzed.lootbags.utils.Utils;
 import me.pyrolyzed.lootbags.utils.WeightedRandom;
 import org.bukkit.Location;
@@ -10,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public class Lootbag implements IOpenable {
 
@@ -17,21 +19,27 @@ public class Lootbag implements IOpenable {
     private int maxRewards;
     private Material display;
     private Set<Reward> rewards;
-
+    private List<String> lore;
+    private ItemStack item;
 
     private WeightedRandom<ItemStack> prizes;
 
 
-    public Lootbag(String name, int maxRewards, Material display, Set<Reward> rewards) {
+    public ItemStack getItem() {
+        return item;
+    }
+
+    public Lootbag(String id, String name, int maxRewards, Material display, List<String> lore, Set<Reward> rewards) {
         this.name = name;
         this.maxRewards = maxRewards;
         this.display = display;
+        this.lore = lore;
 
         prizes = new WeightedRandom<>();
         for(Reward reward : rewards) {
             prizes.add(reward.getChance(), reward.getItem());
         }
-        Utils.log("Created lootbag with name: " + name);
+        item = new ItemBuilder(display).setName(name).setLore(lore).nbt().set("lootbag", id).build();
     }
 
     public String getName() {
@@ -88,8 +96,6 @@ public class Lootbag implements IOpenable {
 
     @Override
     public void open(Player player) {
-        Location location = player.getLocation();
-
-        Utils.log("Lootbag " + name + " was opened at location " + location);
+        player.getInventory().addItem(prizes.next());
     }
 }
